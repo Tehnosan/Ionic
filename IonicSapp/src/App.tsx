@@ -22,15 +22,21 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import {RecipeProvider} from "./components/RecipeProvider";
+import RecipeEdit from "./components/RecipeEdit";
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-      </IonRouterOutlet>
-    </IonReactRouter>
+      <RecipeProvider>
+          <IonReactRouter>
+              <IonRouterOutlet>
+                  <Route path="/recipes" component={Home} exact={true} />
+                  <Route path="/recipe" component={RecipeEdit} exact={true} />
+                  <Route path="/recipe/:id" component={RecipeEdit} exact={true} />
+                  <Route exact path="/" render={() => <Redirect to="/recipes" />} />
+              </IonRouterOutlet>
+          </IonReactRouter>
+      </RecipeProvider>
   </IonApp>
 );
 

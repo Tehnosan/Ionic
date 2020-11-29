@@ -1,10 +1,14 @@
 import React from "react";
 import {RecipeProps} from "./RecipeProps";
-import {IonItem, IonLabel} from "@ionic/react";
+import {IonItem, IonLabel, IonRow} from "@ionic/react";
 
-const Recipe: React.FC<RecipeProps> = ({id, name}) => {
+interface RecipePropertiesExtended extends RecipeProps{
+    onEdit: (id?: string) => void;
+}
+
+const Recipe: React.FC<RecipePropertiesExtended> = ({id, name, onEdit}) => {
     return (
-        <IonItem>
+        <IonItem onClick={() => onEdit(id)}>
             <IonLabel>{name}</IonLabel>
         </IonItem>
     );

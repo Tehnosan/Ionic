@@ -20,17 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/IonicSapp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/recipeApi.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/useRecipes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/recipeApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recipeApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/useRecipes.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +53,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Ionic" />
     <property name="ts.external.directory.path" value="D:\Mobile\Ionic_Git\Ionic\IonicSapp\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Mobile\Ionic_Git\Ionic\IonicSapp\src\components" />
+      <recent name="D:\Mobile\Ionic_Git\Ionic\IonicSapp\src\pages" />
       <recent name="D:\Mobile\Ionic_Git\Ionic\IonicSapp\public\assets\icon" />
       <recent name="D:\Mobile\Ionic_Git\Ionic\IonicSapp\public\assets" />
     </key>
@@ -75,7 +79,11 @@
       <workItem from="1605089677349" duration="2705000" />
       <workItem from="1605348470084" duration="17253000" />
       <workItem from="1605515914338" duration="3606000" />
-      <workItem from="1605604660262" duration="633000" />
+      <workItem from="1605604660262" duration="15617000" />
+      <workItem from="1605691340584" duration="11951000" />
+      <workItem from="1605778833272" duration="4986000" />
+      <workItem from="1605866591678" duration="7169000" />
+      <workItem from="1606649193310" duration="14452000" />
     </task>
     <servers />
   </component>
@@ -95,13 +103,21 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="395" y="111" key="#Inspections" timestamp="1605779973145">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="395" y="111" key="#Inspections/0.0.1536.864@0.0.1536.864" timestamp="1605779973145" />
+    <state x="189" y="151" key="#com.intellij.ide.util.MemberChooser" timestamp="1605617922733">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="189" y="151" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1605617922733" />
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605350692549">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605350692549" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1605604839906">
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1605866649878">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1605604839906" />
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1605866649878" />
   </component>
 </project>

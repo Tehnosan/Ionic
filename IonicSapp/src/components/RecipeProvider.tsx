@@ -1,7 +1,8 @@
-import React, {useCallback, useEffect, useReducer} from 'react';
+import React, {useCallback, useEffect, useReducer, useContext} from 'react';
 import PropTypes from 'prop-types'
 import { RecipeProps } from "./RecipeProps";
 import {getRecipes, createRecipe, updateRecipe /*,newWebSocket*/} from "./recipeApi";
+import { AuthContext } from "../authentication";
 
 type SaveRecipeFn = (recipe: RecipeProps, recipes: RecipeProps[]) => Promise<any>;
 
@@ -76,6 +77,7 @@ interface RecipeProviderProps {
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
+    const { token } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
     const { recipes, fetching, fetchingError, saving, savingError } = state;
 
@@ -102,7 +104,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
         async function fetchRecipes() {
             try {
                 dispatch({ type: FETCH_RECIPES_STARTED });
-                const recipes = await getRecipes();
+                const recipes = await getRecipes(token);
 
                 if (!canceled) {
                     dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes } });
@@ -122,10 +124,10 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
             // console.info(`recipes: ${recipes}`);
             // console.info(`recipes.length: ${recipes?.length}`);
             if(recipe.id && recipes && recipes.length + 1 == parseInt(recipe.id)){
-                savedRecipe = await createRecipe(recipe);
+                savedRecipe = await createRecipe(token, recipe);
             }
             else {
-                savedRecipe = await updateRecipe(recipe);
+                savedRecipe = await updateRecipe(token, recipe);
             }
 
             dispatch({ type: SAVE_RECIPE_SUCCEEDED, payload: { recipe: savedRecipe } });

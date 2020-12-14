@@ -24,19 +24,25 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import {RecipeProvider} from "./components/RecipeProvider";
 import RecipeEdit from "./components/RecipeEdit";
+import { AuthProvider, Login, PrivateRoute } from "./authentication";
 
 const App: React.FC = () => (
   <IonApp>
-      <RecipeProvider>
-          <IonReactRouter>
-              <IonRouterOutlet>
-                  <Route path="/recipes" component={Home} exact={true} />
-                  <Route path="/recipe" component={RecipeEdit} exact={true} />
-                  <Route path="/recipe/:id" component={RecipeEdit} exact={true} />
+      <IonReactRouter>
+          <IonRouterOutlet>
+              <AuthProvider>
+                  <Route path="/login" component={Login} exact={true}/>
+
+                  <RecipeProvider>
+                      <PrivateRoute path="/recipes" component={Home} exact={true} />
+                      <PrivateRoute path="/recipe" component={RecipeEdit} exact={true} />
+                      <PrivateRoute path="/recipe/:id" component={RecipeEdit} exact={true} />
+                  </RecipeProvider>
+
                   <Route exact path="/" render={() => <Redirect to="/recipes" />} />
-              </IonRouterOutlet>
-          </IonReactRouter>
-      </RecipeProvider>
+              </AuthProvider>
+          </IonRouterOutlet>
+      </IonReactRouter>
   </IonApp>
 );
 

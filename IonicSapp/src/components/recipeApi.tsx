@@ -1,46 +1,20 @@
 import axios from 'axios';
 import io from 'socket.io-client';
+import { authConfig, baseUrl, withLogs } from "../core";
 import {RecipeProps} from "./RecipeProps";
 
-const baseURL = 'http://127.0.0.1:5000/api/v1';
+const recipeUrl = `http://${baseUrl}/api/v1`;
 
-const config = {
-    headers:{
-        'Content_Type' : 'application/json'
-    }
-};
-
-export const getRecipes: () => Promise<RecipeProps[]> = () => {
-    return axios
-        .get(`${baseURL}/recipes`, config)
-        .then(res => {
-            return Promise.resolve(res.data);
-        })
-        .catch(error => {
-            return Promise.reject(error);
-        });
+export const getRecipes: (token: string) => Promise<RecipeProps[]> = token => {
+    return withLogs(axios.get(`${recipeUrl}/recipes`, authConfig(token)), 'getRecipes');
 }
 
-export const createRecipe: (recipe: RecipeProps) => Promise<RecipeProps[]> = recipe => {
-    return axios
-        .post(`${baseURL}/recipe`, recipe, config)
-        .then(res => {
-            return Promise.resolve(res.data);
-        })
-        .catch(error => {
-            return Promise.reject(error);
-        });
+export const createRecipe: (token: string, recipe: RecipeProps) => Promise<RecipeProps[]> = (token, recipe) => {
+    return withLogs(axios.post(`${recipeUrl}/recipe`, recipe, authConfig(token)), 'createRecipe');
 }
 
-export const updateRecipe: (recipe: RecipeProps) => Promise<RecipeProps[]> = recipe => {
-    return axios
-        .put(`${baseURL}/recipe/${recipe.id}`, recipe, config)
-        .then(res => {
-            return Promise.resolve(res.data);
-        })
-        .catch(error => {
-            return Promise.reject(error);
-        });
+export const updateRecipe: (token: string, recipe: RecipeProps) => Promise<RecipeProps[]> = (token, recipe) => {
+    return withLogs(axios.put(`${recipeUrl}/recipe/${recipe.id}`, recipe, authConfig(token)), 'updateRecipe');
 }
 
 interface MessageData {

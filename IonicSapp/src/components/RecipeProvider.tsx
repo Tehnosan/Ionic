@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useReducer} from 'react';
 import PropTypes from 'prop-types'
 import { RecipeProps } from "./RecipeProps";
-import {getRecipes, createRecipe, updateRecipe, newWebSocket} from "./recipeApi";
+import {getRecipes, createRecipe, updateRecipe /*,newWebSocket*/} from "./recipeApi";
 
 type SaveRecipeFn = (recipe: RecipeProps, recipes: RecipeProps[]) => Promise<any>;
 
@@ -80,7 +80,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
     const { recipes, fetching, fetchingError, saving, savingError } = state;
 
     useEffect(getRecipesEffect, []);
-    useEffect(wsEffect, []);
+    //useEffect(wsEffect, []);
 
     const saveRecipe = useCallback<SaveRecipeFn>(saveRecipeCallback, []);
     const value = { recipes, fetching, fetchingError, saving, savingError, saveRecipe };
@@ -134,25 +134,25 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
         }
     }
 
-    function wsEffect() {
-        let canceled = false;
-        console.info("wsEffect - connecting");
-        const closeWebSocket = newWebSocket(message => {
-            if(canceled) {
-                return;
-            }
-
-            const { event, payload: { recipe } } = message;
-            console.info(`ws message, recipe ${event}`);
-            if(event == 'created' || event == 'updated') {
-                dispatch({type: SAVE_RECIPE_SUCCEEDED, payload: { recipe } });
-            }
-        });
-
-        return () => {
-            console.info("wsEffect - disconnecting");
-            canceled = true;
-            closeWebSocket();
-        }
-    }
+    // function wsEffect() {
+    //     let canceled = false;
+    //     console.info("wsEffect - connecting");
+    //     const closeWebSocket = newWebSocket(message => {
+    //         if(canceled) {
+    //             return;
+    //         }
+    //
+    //         // const { event, payload: { recipe } } = message;
+    //         // console.info(`ws message, recipe ${event}`);
+    //         // if(event == 'created' || event == 'updated') {
+    //         //     dispatch({type: SAVE_RECIPE_SUCCEEDED, payload: { recipe } });
+    //         // }
+    //     });
+    //
+    //     return () => {
+    //         console.info("wsEffect - disconnecting");
+    //         canceled = true;
+    //         closeWebSocket();
+    //     }
+    // }
 };

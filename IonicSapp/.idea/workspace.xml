@@ -20,18 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/recipeApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recipeApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/useRecipes.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +49,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Ionic" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Mobile\Ionic_Git\Ionic\IonicSapp\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -84,6 +78,12 @@
       <workItem from="1605778833272" duration="4986000" />
       <workItem from="1605866591678" duration="7169000" />
       <workItem from="1606649193310" duration="14452000" />
+      <workItem from="1606915856257" duration="857000" />
+      <workItem from="1606916931663" duration="837000" />
+      <workItem from="1606995132642" duration="607000" />
+      <workItem from="1607776487409" duration="9663000" />
+      <workItem from="1607862507786" duration="13528000" />
+      <workItem from="1607936431057" duration="3208000" />
     </task>
     <servers />
   </component>
@@ -115,9 +115,25 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605350692549" />
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1605866649878">
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1607941553390">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1605866649878" />
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1607941553390" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1606916719815">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1606916719815">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1606916719815">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1606916719815">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
   </component>
 </project>

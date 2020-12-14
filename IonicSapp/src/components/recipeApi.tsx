@@ -1,4 +1,5 @@
 import axios from 'axios';
+import io from 'socket.io-client';
 import {RecipeProps} from "./RecipeProps";
 
 const baseURL = 'http://127.0.0.1:5000/api/v1';
@@ -44,32 +45,52 @@ export const updateRecipe: (recipe: RecipeProps) => Promise<RecipeProps[]> = rec
 
 interface MessageData {
     event: string;
-    payload: {
-        recipe: RecipeProps;
-    };
+    // payload: {
+    //     recipe: RecipeProps;
+    // };
 }
 
-export const newWebSocket = (onmessage: (data: MessageData) => void) => {
-    const ws = new WebSocket(`ws://${baseURL}`)
+// export const newWebSocket = (onmessage: (data: MessageData) => void) => {
+//     const ws = new WebSocket(`ws://${baseURL}`)
+//
+//     ws.onopen = () => {
+//         console.info("web socket onopen");
+//     };
+//     ws.onclose = () => {
+//         console.info("web socket onclose");
+//     };
+//     ws.onerror = error =>{
+//         console.info("web socket onerror", error);
+//     };
+//     ws.onmessage = messageEvent => {
+//         console.info("web socket onmessage");
+//         onmessage(JSON.parse(messageEvent.data));
+//     };
+//
+//     return () => {
+//         ws.close();
+//     }
+// }
 
-    ws.onopen = () => {
-        console.info("web socket onopen");
-    };
-    ws.onclose = () => {
-        console.info("web socket onclose");
-    };
-    ws.onerror = error =>{
-        console.info("web socket onerror", error);
-    };
-    ws.onmessage = messageEvent => {
-        console.info("web socket onmessage");
-        onmessage(JSON.parse(messageEvent.data));
-    };
-
-    return () => {
-        ws.close();
-    }
-}
+// export const newWebSocket = (onmessage: (data: MessageData) => void) => {
+//     const socket = io('http://127.0.0.1:5000/api/v1');
+//
+//     socket.on('connect', () => {
+//         console.info("connect client");
+//         socket.emit("my event", {x : "x"});
+//         console.info("connect client 2");
+//     });
+//
+//     socket.io.on("event", () => {
+//         console.info("event");
+//     });
+//
+//     socket.on('abc', () => {
+//         console.info("socketio added");
+//     });
+//
+//     return socket.close;
+// }
 
 
 

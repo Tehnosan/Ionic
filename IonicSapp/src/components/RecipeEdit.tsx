@@ -3,15 +3,12 @@ import {
     IonButton,
     IonButtons,
     IonContent,
-    IonHeader, IonIcon,
+    IonHeader,
     IonInput,
     IonLoading,
     IonPage,
     IonTitle,
-    IonToolbar,
-    IonRow,
-    IonLabel,
-    IonCol
+    IonToolbar
 } from "@ionic/react";
 import {RecipeContext} from "./RecipeProvider";
 import { RouteComponentProps } from "react-router";

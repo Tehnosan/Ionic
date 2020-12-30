@@ -5,8 +5,8 @@ import {RecipeProps} from "./RecipeProps";
 
 const recipeUrl = `http://${baseUrl}/api/v1`;
 
-export const getRecipes: (token: string) => Promise<RecipeProps[]> = token => {
-    return withLogs(axios.get(`${recipeUrl}/recipes`, authConfig(token)), 'getRecipes');
+export const getRecipes: (token: string, limit: number, page: number) => Promise<RecipeProps[]> = (token, limit, page) => {
+    return withLogs(axios.get(`${recipeUrl}/recipes/${limit}/${page}`, authConfig(token)), 'getRecipes');
 }
 
 export const createRecipe: (token: string, recipe: RecipeProps) => Promise<RecipeProps[]> = (token, recipe) => {
@@ -18,53 +18,24 @@ export const updateRecipe: (token: string, recipe: RecipeProps) => Promise<Recip
 }
 
 interface MessageData {
-    event: string;
-    // payload: {
-    //     recipe: RecipeProps;
-    // };
+    type: string;
+    payload: RecipeProps;
 }
 
-// export const newWebSocket = (onmessage: (data: MessageData) => void) => {
-//     const ws = new WebSocket(`ws://${baseURL}`)
-//
-//     ws.onopen = () => {
-//         console.info("web socket onopen");
-//     };
-//     ws.onclose = () => {
-//         console.info("web socket onclose");
-//     };
-//     ws.onerror = error =>{
-//         console.info("web socket onerror", error);
-//     };
-//     ws.onmessage = messageEvent => {
-//         console.info("web socket onmessage");
-//         onmessage(JSON.parse(messageEvent.data));
-//     };
-//
-//     return () => {
-//         ws.close();
-//     }
-// }
+export const newWebSocket = (token: string, onmessage: (data: MessageData) => void) => {
+    const socket = io('ws://127.0.0.1:5000');
 
-// export const newWebSocket = (onmessage: (data: MessageData) => void) => {
-//     const socket = io('http://127.0.0.1:5000/api/v1');
-//
-//     socket.on('connect', () => {
-//         console.info("connect client");
-//         socket.emit("my event", {x : "x"});
-//         console.info("connect client 2");
-//     });
-//
-//     socket.io.on("event", () => {
-//         console.info("event");
-//     });
-//
-//     socket.on('abc', () => {
-//         console.info("socketio added");
-//     });
-//
-//     return socket.close;
-// }
+    socket.on('connect', () => {
+        console.info("web socket connect")
+        socket.send(JSON.stringify({ type: 'authorization', payload: { token } }));
+    });
+
+    socket.on('disconnect', () => {
+        console.info("web socket disconnect")
+    });
+
+    return socket.close;
+}
 
 
 

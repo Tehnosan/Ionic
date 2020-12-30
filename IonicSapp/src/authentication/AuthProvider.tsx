@@ -86,7 +86,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
                 setState({
                     ...state,
-                    token,
+                    token: token,
                     pendingAuthentication: false,
                     isAuthenticated: true,
                     isAuthenticating: false,

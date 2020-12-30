@@ -1,10 +1,11 @@
-import React, {useCallback, useEffect, useReducer, useContext} from 'react';
+import React, {useCallback, useEffect, useReducer, useContext, useState} from 'react';
 import PropTypes from 'prop-types'
 import { RecipeProps } from "./RecipeProps";
-import {getRecipes, createRecipe, updateRecipe /*,newWebSocket*/} from "./recipeApi";
+import {getRecipes, createRecipe, updateRecipe ,newWebSocket} from "./recipeApi";
 import { AuthContext } from "../authentication";
 
 type SaveRecipeFn = (recipe: RecipeProps, recipes: RecipeProps[]) => Promise<any>;
+type SearchNextFn = ($event: CustomEvent<void>, recipes?: RecipeProps[]) => Promise<any>;
 
 export interface RecipesState {
     recipes?: RecipeProps[],
@@ -13,6 +14,8 @@ export interface RecipesState {
     saving: boolean,
     savingError?: Error | null,
     saveRecipe?: SaveRecipeFn,
+    searchNext?: SearchNextFn,
+    disableInfiniteScroll: boolean
 }
 
 interface ActionProps{
@@ -23,6 +26,7 @@ interface ActionProps{
 const initialState: RecipesState = {
     fetching: false,
     saving: false,
+    disableInfiniteScroll: false
 };
 
 const FETCH_RECIPES_STARTED = 'FETCH_RECIPES_STARTED';
@@ -42,7 +46,7 @@ const reducer: (state: RecipesState, action: ActionProps) => RecipesState =
                 return { ...state, recipes: payload.recipes, fetching: false };
 
             case FETCH_RECIPES_FAILED:
-                return { ...state, fetchingError: payload.error, fetching: false};
+                return { ...state, fetchingError: payload.error, fetching: false };
 
             case SAVE_RECIPE_STARTED:
                 return { ...state, savingError: null, saving: true};
@@ -77,21 +81,39 @@ interface RecipeProviderProps {
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
+    const recipesPerPage = 15;
+    let page = 0;
+    
     const { token } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { recipes, fetching, fetchingError, saving, savingError } = state;
+    const { recipes, fetching, fetchingError, saving, savingError, disableInfiniteScroll } = state;
 
-    useEffect(getRecipesEffect, []);
-    //useEffect(wsEffect, []);
+    useEffect(getRecipesEffect, [token]);
+    useEffect(wsEffect, [token]);
 
-    const saveRecipe = useCallback<SaveRecipeFn>(saveRecipeCallback, []);
-    const value = { recipes, fetching, fetchingError, saving, savingError, saveRecipe };
+    const saveRecipe = useCallback<SaveRecipeFn>(saveRecipeCallback, [token]);
+    const searchNext = useCallback<SearchNextFn>(getMoreRecipes, [token]);
+    const value = { recipes, fetching, fetchingError, saving, savingError, saveRecipe, searchNext, disableInfiniteScroll };
 
     return (
         <RecipeContext.Provider value={value}>
             {children}
         </RecipeContext.Provider>
     );
+
+    async function getMoreRecipes($event: CustomEvent<void>, recipes?: RecipeProps[]) {
+        let new_recipes: RecipeProps[] = [];
+        page += 1;
+
+        dispatch({ type: FETCH_RECIPES_STARTED });
+        new_recipes = await getRecipes(token, recipesPerPage, page);
+
+        if (recipes) {
+            dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes: [...recipes, ...new_recipes] } });
+        }
+
+        await ($event.target as HTMLIonInfiniteScrollElement).complete();
+    }
 
     function getRecipesEffect() {
         let canceled = false;
@@ -102,9 +124,13 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
         }
 
         async function fetchRecipes() {
+            if(!token?.trim()) {
+                return;
+            }
             try {
                 dispatch({ type: FETCH_RECIPES_STARTED });
-                const recipes = await getRecipes(token);
+                page += 1;
+                const recipes = await getRecipes(token, recipesPerPage, page);
 
                 if (!canceled) {
                     dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes } });
@@ -136,25 +162,29 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
         }
     }
 
-    // function wsEffect() {
-    //     let canceled = false;
-    //     console.info("wsEffect - connecting");
-    //     const closeWebSocket = newWebSocket(message => {
-    //         if(canceled) {
-    //             return;
-    //         }
-    //
-    //         // const { event, payload: { recipe } } = message;
-    //         // console.info(`ws message, recipe ${event}`);
-    //         // if(event == 'created' || event == 'updated') {
-    //         //     dispatch({type: SAVE_RECIPE_SUCCEEDED, payload: { recipe } });
-    //         // }
-    //     });
-    //
-    //     return () => {
-    //         console.info("wsEffect - disconnecting");
-    //         canceled = true;
-    //         closeWebSocket();
-    //     }
-    // }
+    function wsEffect() {
+        let canceled = false;
+        console.info("wsEffect - connecting");
+        let closeWebSocket: () => void;
+
+        if (token?.trim()) {
+            closeWebSocket = newWebSocket(token, message => {
+                if(canceled) {
+                    return;
+                }
+
+                const { type, payload: recipe } = message;
+                console.info(`ws message, recipe ${type}`);
+                if(type == 'created' || type == 'updated') {
+                    dispatch({type: SAVE_RECIPE_SUCCEEDED, payload: { recipe } });
+                }
+            });
+        }
+
+        return () => {
+            console.info("wsEffect - disconnecting");
+            canceled = true;
+            closeWebSocket?.();
+        }
+    }
 };

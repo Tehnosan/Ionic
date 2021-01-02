@@ -21,13 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/authentication/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/AuthProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authentication/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/recipeApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/recipeApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +55,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/mobileViski/pdm-ionic-app" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ionicStorageApp" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Mobile\Ionic_Git\Ionic\IonicSapp\node_modules\typescript\lib" />
   </component>
@@ -101,6 +97,8 @@
       <workItem from="1608554545697" duration="11202000" />
       <workItem from="1608638053176" duration="10155000" />
       <workItem from="1609324708366" duration="19142000" />
+      <workItem from="1609417330553" duration="10464000" />
+      <workItem from="1609581498811" duration="374000" />
     </task>
     <servers />
   </component>
@@ -132,10 +130,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605350692549" />
-    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1609340214571">
+    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1609419014352">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1609340214571" />
+    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1609419014352" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1606916719815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

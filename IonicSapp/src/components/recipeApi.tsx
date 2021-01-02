@@ -34,7 +34,9 @@ export const newWebSocket = (token: string, onmessage: (data: MessageData) => vo
         console.info("web socket disconnect")
     });
 
-    return socket.close;
+    return () => {
+        socket.close();
+    }
 }
 
 

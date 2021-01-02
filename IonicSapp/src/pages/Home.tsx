@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import { RouteComponentProps } from "react-router";
 import {
+    IonButton,
     IonContent,
     IonFab,
     IonFabButton,
@@ -17,16 +18,23 @@ import Recipe from "../components/Recipe";
 import { add } from "ionicons/icons";
 import { RecipeContext } from "../components/RecipeProvider";
 import {RecipeProps} from "../components/RecipeProps";
+import {AuthContext} from "../authentication";
 
 const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
     const { recipes, fetching, fetchingError, searchNext, disableInfiniteScroll } = useContext(RecipeContext);
+    const {logout} = useContext(AuthContext);
     const [searchRecipe, setSearchRecipe] = useState<string>('');
+
+    const handleLogout = () => {
+        logout?.();
+    }
 
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Sandrino's app</IonTitle>
+                    <IonButton onClick={handleLogout}>Logout</IonButton>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { RecipeProps } from "./RecipeProps";
 import {getRecipes, createRecipe, updateRecipe ,newWebSocket} from "./recipeApi";
 import { AuthContext } from "../authentication";
+import {Plugins} from "@capacitor/core";
 
 type SaveRecipeFn = (recipe: RecipeProps, recipes: RecipeProps[]) => Promise<any>;
 type SearchNextFn = ($event: CustomEvent<void>, recipes?: RecipeProps[]) => Promise<any>;
@@ -35,15 +36,18 @@ const FETCH_RECIPES_FAILED = 'FETCH_RECIPES_FAILED';
 const SAVE_RECIPE_STARTED = 'SAVE_RECIPE_STARTED';
 const SAVE_RECIPE_SUCCEEDED = 'SAVE_RECIPE_SUCCEEDED';
 const SAVE_RECIPE_FAILED = 'SAVE_RECIPE_FAILED';
+const FETCH_STORAGE = "FETCH_STORAGE";
 
 const reducer: (state: RecipesState, action: ActionProps) => RecipesState =
     (state, {type, payload}) => {
         switch (type) {
+            case FETCH_STORAGE:
+                return { ...state, disableInfiniteScroll: true};
             case FETCH_RECIPES_STARTED:
                 return { ...state, fetching: true, fetchingError: null };
 
             case FETCH_RECIPES_SUCCEEDED:
-                return { ...state, recipes: payload.recipes, fetching: false };
+                return { ...state, recipes: payload.recipes, fetching: false, disableInfiniteScroll: false };
 
             case FETCH_RECIPES_FAILED:
                 return { ...state, fetchingError: payload.error, fetching: false };
@@ -103,14 +107,23 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
 
     async function getMoreRecipes($event: CustomEvent<void>, recipes?: RecipeProps[]) {
         let new_recipes: RecipeProps[] = [];
+        let new_all_recipes: RecipeProps[] = [];
+        const { Storage } = Plugins;
         page += 1;
 
         dispatch({ type: FETCH_RECIPES_STARTED });
         new_recipes = await getRecipes(token, recipesPerPage, page);
 
         if (recipes) {
-            dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes: [...recipes, ...new_recipes] } });
+            new_all_recipes = [...recipes, ...new_recipes];
         }
+
+        await Storage.set({
+           key: 'recipes',
+           value: JSON.stringify(new_all_recipes)
+        });
+
+        dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes: new_all_recipes } });
 
         await ($event.target as HTMLIonInfiniteScrollElement).complete();
     }
@@ -131,12 +144,30 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
                 dispatch({ type: FETCH_RECIPES_STARTED });
                 page += 1;
                 const recipes = await getRecipes(token, recipesPerPage, page);
+                const { Storage } = Plugins;
 
                 if (!canceled) {
                     dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes } });
+
+                    await Storage.set({
+                        key: 'recipes',
+                        value: JSON.stringify(recipes)
+                    });
                 }
             } catch (error) {
-                dispatch({ type: FETCH_RECIPES_FAILED, payload: { error } });
+                const { Storage } = Plugins;
+
+                dispatch({ type: FETCH_RECIPES_STARTED });
+                const recipes_storage = await Storage.get({key: 'recipes'});
+
+                if (recipes_storage.value) {
+                    const parsed_recipes = JSON.parse(recipes_storage.value);
+                    dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes: parsed_recipes } });
+                    dispatch({ type: FETCH_STORAGE });
+                }
+                else {
+                    dispatch({ type: FETCH_RECIPES_FAILED, payload: { error } });
+                }
             }
         }
     }

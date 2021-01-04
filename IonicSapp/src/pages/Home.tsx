@@ -15,15 +15,18 @@ import {
     IonToolbar
 } from "@ionic/react";
 import Recipe from "../components/Recipe";
-import { add } from "ionicons/icons";
+import { add, wifi, warning } from "ionicons/icons";
 import { RecipeContext } from "../components/RecipeProvider";
 import {RecipeProps} from "../components/RecipeProps";
 import {AuthContext} from "../authentication";
+import {useNetwork} from "./useNetwork";
+import {useAppState} from "./useAppState";
 
 const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
     const { recipes, fetching, fetchingError, searchNext, disableInfiniteScroll } = useContext(RecipeContext);
     const {logout} = useContext(AuthContext);
     const [searchRecipe, setSearchRecipe] = useState<string>('');
+    const { appState } = useAppState();
 
     const handleLogout = () => {
         logout?.();
@@ -34,14 +37,14 @@ const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Sandrino's app</IonTitle>
-                    <IonButton onClick={handleLogout}>Logout</IonButton>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
+                <div>App state is {JSON.stringify(appState)}</div>
+                <div>Network status is {JSON.stringify(useNetwork().networkStatus)}</div>
+                <IonButton onClick={handleLogout}>Logout</IonButton>
+                <IonSearchbar value={searchRecipe} debounce={500} onIonChange={e => setSearchRecipe(e.detail.value!)}/>
                 <IonLoading isOpen={fetching} message="Fetching recipes" />
-
-                <IonSearchbar value={searchRecipe} debounce={500} onIonChange={e => setSearchRecipe(e.detail.value!)}></IonSearchbar>
-
                 {recipes && (
                     <IonList>
                         {recipes
@@ -67,6 +70,11 @@ const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
                     </IonFabButton>
                 </IonFab>
 
+                <IonFab vertical="top" horizontal="center" slot="fixed">
+                    <IonFabButton disabled={true} color="primary">
+                        <IonIcon icon={useNetwork().networkStatus.connected ? wifi : warning}/>
+                    </IonFabButton>
+                </IonFab>
             </IonContent>
         </IonPage>
     );

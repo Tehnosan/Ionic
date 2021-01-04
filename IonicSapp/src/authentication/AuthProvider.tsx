@@ -142,7 +142,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                     })
                 });
             } catch (error) {
-                console.warn("Sandri " + error.response.data.message);
+                //console.warn("Sandri " + error.response.data.message);
+                //alert(error.response.data.message);
                 if(canceled) {
                     return;
                 }

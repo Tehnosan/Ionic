@@ -41,7 +41,7 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
     const handleSave = () => {
         let newID;
         if(recipes?.length){
-            newID = (recipes.length + 1).toString();
+            newID = (-1).toString();
         }
         const editedRecipe = recipe ? { ...recipe, name: name, time: time, difficulty: difficulty} : { id: newID, name: name, time: time, difficulty: difficulty };
 

@@ -63,7 +63,7 @@ const reducer: (state: RecipesState, action: ActionProps) => RecipesState =
                 console.info(recipe);
 
                 if(index === -1){
-                    recipes.splice(0, 0, recipe);
+                    //recipes.splice(0, 0, recipe);
                 }
                 else {
                     recipes[index] = recipe;
@@ -180,7 +180,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
             // console.info(`recipe.id: ${recipe.id}`);
             // console.info(`recipes: ${recipes}`);
             // console.info(`recipes.length: ${recipes?.length}`);
-            if(recipe.id && recipes && recipes.length + 1 == parseInt(recipe.id)){
+            if(recipe.id && recipes && recipe.id === "-1"){
                 savedRecipe = await createRecipe(token, recipe);
             }
             else {

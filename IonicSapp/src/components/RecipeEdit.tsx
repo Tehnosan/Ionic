@@ -2,8 +2,8 @@ import React, {useContext, useEffect, useState} from "react";
 import {
     IonButton,
     IonButtons,
-    IonContent,
-    IonHeader,
+    IonContent, IonFab, IonFabButton,
+    IonHeader, IonIcon, IonImg,
     IonInput,
     IonLoading,
     IonPage,
@@ -13,6 +13,9 @@ import {
 import {RecipeContext} from "./RecipeProvider";
 import { RouteComponentProps } from "react-router";
 import { RecipeProps } from "./RecipeProps";
+import {camera} from "ionicons/icons";
+import {Photo, usePhotoGallery} from "./usePhotoGallery";
+import './image.css';
 
 interface RecipeEditProps extends RouteComponentProps<{
     id?: string;
@@ -25,6 +28,9 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
     const [difficulty, setDifficulty] = useState('');
     const [recipe, setRecipe] = useState<RecipeProps>();
 
+    const { photos, takePhoto, deletePhoto, currentPhotoWebPath, getPhotoByName, setCurrentPhotoWebPath, currentPhotoName } = usePhotoGallery();
+    const [photoToDelete, setPhotoToDelete] = useState<Photo>();
+
     useEffect(() => {
         const routeID = match.params.id || '';
         const local_recipe = recipes?.find(it => it.id == routeID);
@@ -36,14 +42,19 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
             setTime(local_recipe.time);
             setDifficulty(local_recipe.difficulty);
         }
+
+        const webPath = async () => {
+            if(local_recipe && local_recipe.photoName) {
+                setCurrentPhotoWebPath(await getPhotoByName(local_recipe.photoName));
+            }
+        };
+        webPath();
+
     }, [match.params.id, recipes]);
 
     const handleSave = () => {
-        let newID;
-        if(recipes?.length){
-            newID = (-1).toString();
-        }
-        const editedRecipe = recipe ? { ...recipe, name: name, time: time, difficulty: difficulty} : { id: newID, name: name, time: time, difficulty: difficulty };
+        let newID = (-1).toString();
+        const editedRecipe = recipe ? { ...recipe, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName } : { id: newID, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName };
 
         saveRecipe && saveRecipe(editedRecipe, recipes || []).then(() => history.goBack());
     };
@@ -64,11 +75,18 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
                 <IonInput value={name} onIonChange={e => setName(e.detail.value || '')} placeholder={"Name"} />
                 <IonInput value={time} onIonChange={e => setTime(e.detail.value || '')} placeholder={"Time"} />
                 <IonInput value={difficulty} onIonChange={e => setDifficulty(e.detail.value || '')} placeholder={"Difficulty"} />
+                <IonImg src={currentPhotoWebPath} class="image"/>
 
                 <IonLoading isOpen={saving}/>
                 {savingError && (
                     <div>{savingError.message || 'Failed to save recipe'}</div>
                 )}
+
+                <IonFab vertical="bottom" horizontal="center" slot="fixed">
+                    <IonFabButton onClick={() => takePhoto()}>
+                        <IonIcon icon={camera}/>
+                    </IonFabButton>
+                </IonFab>
             </IonContent>
         </IonPage>
     );

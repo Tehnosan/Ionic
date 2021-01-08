@@ -16,7 +16,7 @@ export interface RecipesState {
     savingError?: Error | null,
     saveRecipe?: SaveRecipeFn,
     searchNext?: SearchNextFn,
-    disableInfiniteScroll: boolean
+    disableInfiniteScroll: boolean,
 }
 
 interface ActionProps{
@@ -27,7 +27,7 @@ interface ActionProps{
 const initialState: RecipesState = {
     fetching: false,
     saving: false,
-    disableInfiniteScroll: false
+    disableInfiniteScroll: false,
 };
 
 const FETCH_RECIPES_STARTED = 'FETCH_RECIPES_STARTED';
@@ -85,12 +85,13 @@ interface RecipeProviderProps {
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
-    const recipesPerPage = 15;
+    const recipesPerPage = 2;
     let page = 0;
     
     const { token } = useContext(AuthContext);
     const [state, dispatch] = useReducer(reducer, initialState);
     const { recipes, fetching, fetchingError, saving, savingError, disableInfiniteScroll } = state;
+
 
     useEffect(getRecipesEffect, [token]);
     useEffect(wsEffect, [token]);
@@ -148,7 +149,6 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
 
                 if (!canceled) {
                     dispatch({ type: FETCH_RECIPES_SUCCEEDED, payload: { recipes } });
-
                     await Storage.set({
                         key: 'recipes',
                         value: JSON.stringify(recipes)

@@ -20,12 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/useAppState.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/useNetwork.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/image.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authentication/AuthProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/AuthProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RecipeProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ionicAppStateNetworkBackgroundTaskApp" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ionicLocationMap" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Mobile\Ionic_Git\Ionic\IonicSapp\node_modules\typescript\lib" />
   </component>
@@ -100,7 +105,11 @@
       <workItem from="1608638053176" duration="10155000" />
       <workItem from="1609324708366" duration="19142000" />
       <workItem from="1609417330553" duration="10464000" />
-      <workItem from="1609581498811" duration="13739000" />
+      <workItem from="1609581498811" duration="13982000" />
+      <workItem from="1609838218083" duration="11267000" />
+      <workItem from="1610004011632" duration="23831000" />
+      <workItem from="1610095364280" duration="65000" />
+      <workItem from="1610101674601" duration="11989000" />
     </task>
     <servers />
   </component>
@@ -132,10 +141,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605350692549" />
-    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1609584386458">
+    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1610114607835">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1609584386458" />
+    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1610114607835" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1606916719815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -152,10 +161,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1608562379480">
+    <state x="425" y="197" key="run.anything.popup" timestamp="1610005356653">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1608562379480" />
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1610005356653" />
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1608562223565">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

@@ -3,4 +3,5 @@ export interface RecipeProps {
     name: string;
     time: string;
     difficulty: string;
+    photoName?: string | Promise<string>;
 }

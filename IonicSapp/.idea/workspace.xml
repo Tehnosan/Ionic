@@ -20,17 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MyMap.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/useMyLocation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/mapsApiKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mapsApiKey.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +100,7 @@
       <workItem from="1610004011632" duration="23831000" />
       <workItem from="1610095364280" duration="65000" />
       <workItem from="1610101674601" duration="24905000" />
-      <workItem from="1610189326811" duration="6757000" />
+      <workItem from="1610189326811" duration="8008000" />
     </task>
     <servers />
   </component>

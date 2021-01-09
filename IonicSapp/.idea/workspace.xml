@@ -20,17 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/image.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MyMap.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/useMyLocation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeEdit.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeProps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProps.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/mapsApiKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mapsApiKey.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/usePhotoGallery.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +108,8 @@
       <workItem from="1609838218083" duration="11267000" />
       <workItem from="1610004011632" duration="23831000" />
       <workItem from="1610095364280" duration="65000" />
-      <workItem from="1610101674601" duration="11989000" />
+      <workItem from="1610101674601" duration="24905000" />
+      <workItem from="1610189326811" duration="6757000" />
     </task>
     <servers />
   </component>
@@ -161,13 +161,13 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1606916719815" />
-    <state x="425" y="197" key="run.anything.popup" timestamp="1610005356653">
+    <state x="177" y="178" key="run.anything.popup" timestamp="1610197827587">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1610005356653" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1608562223565">
+    <state x="177" y="178" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1610197827587" />
+    <state x="430" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1610121124247">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1608562223565" />
+    <state x="430" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1610121124247" />
   </component>
 </project>

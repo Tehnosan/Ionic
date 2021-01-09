@@ -75,12 +75,6 @@ const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
                         <IonIcon icon={add} />
                     </IonFabButton>
                 </IonFab>
-
-                <IonFab vertical="top" horizontal="center" slot="fixed">
-                    <IonFabButton disabled={true} color="primary">
-                        <IonIcon icon={disableInfiniteScroll ? warning : wifi}/>
-                    </IonFabButton>
-                </IonFab>
             </IonContent>
         </IonPage>
     );

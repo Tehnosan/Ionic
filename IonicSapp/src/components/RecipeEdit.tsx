@@ -16,6 +16,8 @@ import { RecipeProps } from "./RecipeProps";
 import {camera} from "ionicons/icons";
 import {Photo, usePhotoGallery} from "./usePhotoGallery";
 import './image.css';
+import {useMyLocation} from "./useMyLocation";
+import {MyMap} from "./MyMap";
 
 interface RecipeEditProps extends RouteComponentProps<{
     id?: string;
@@ -26,12 +28,18 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
     const [name, setName] = useState('');
     const [time, setTime] = useState('');
     const [difficulty, setDifficulty] = useState('');
+    const [latitude, setLatitude] = useState<number | undefined>(46.56862409846464);
+    const [longitude, setLongitude] = useState<number | undefined>(26.892768939521332);
     const [recipe, setRecipe] = useState<RecipeProps>();
 
-    const { photos, takePhoto, deletePhoto, currentPhotoWebPath, getPhotoByName, setCurrentPhotoWebPath, currentPhotoName } = usePhotoGallery();
+    const { photos, takePhoto, deletePhoto, currentPhotoWebPath, getPhotoByName, setCurrentPhotoWebPath, currentPhotoName, setCurrentPhotoName } = usePhotoGallery();
     const [photoToDelete, setPhotoToDelete] = useState<Photo>();
 
+    const myLocation = useMyLocation();
+    const { latitude: lat, longitude: lng } = myLocation.position?.coords || {}
+
     useEffect(() => {
+        console.info("Use EFect");
         const routeID = match.params.id || '';
         const local_recipe = recipes?.find(it => it.id == routeID);
 
@@ -41,6 +49,13 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
             setName(local_recipe.name);
             setTime(local_recipe.time);
             setDifficulty(local_recipe.difficulty);
+
+            if (typeof local_recipe.photoName === "string")
+                setCurrentPhotoName(local_recipe.photoName);
+
+            console.info("DDDDDDDDDD " + local_recipe.latitude + " " + lat + " " + latitude + " HHHHHHHHHHHHHHHHHH");
+            setLatitude(local_recipe.latitude);
+            setLongitude(local_recipe.longitude);
         }
 
         const webPath = async () => {
@@ -54,8 +69,9 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
 
     const handleSave = () => {
         let newID = (-1).toString();
-        const editedRecipe = recipe ? { ...recipe, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName } : { id: newID, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName };
+        const editedRecipe = recipe ? { ...recipe, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName, latitude: latitude, longitude: longitude } : { id: newID, name: name, time: time, difficulty: difficulty, photoName: currentPhotoName, latitude: latitude, longitude: longitude };
 
+        console.info(currentPhotoName + " GGGGGGGGGGGGGGG");
         saveRecipe && saveRecipe(editedRecipe, recipes || []).then(() => history.goBack());
     };
 
@@ -77,6 +93,14 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
                 <IonInput value={difficulty} onIonChange={e => setDifficulty(e.detail.value || '')} placeholder={"Difficulty"} />
                 <IonImg src={currentPhotoWebPath} class="image"/>
 
+                <MyMap
+                    lat={latitude}
+                    lng={longitude}
+                    onMapClick={log('onMap')}
+                    onMarkerClick={log('onMarker')}
+                />
+                <p>{latitude + " aaaa"}</p>
+
                 <IonLoading isOpen={saving}/>
                 {savingError && (
                     <div>{savingError.message || 'Failed to save recipe'}</div>
@@ -90,6 +114,14 @@ const RecipeEdit: React.FC<RecipeEditProps> = ({ history, match }) => {
             </IonContent>
         </IonPage>
     );
+
+    function log(source: string) {
+        return (l: any) => {
+            console.log(source,l.latLng.lat(), l.latLng.lng());
+            setLatitude(l.latLng.lat());
+            setLongitude(l.latLng.lng());
+            return l};
+    }
 };
 
 export default RecipeEdit;

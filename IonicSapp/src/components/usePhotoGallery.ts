@@ -103,6 +103,7 @@ export function usePhotoGallery() {
         currentPhotoWebPath,
         getPhotoByName,
         setCurrentPhotoWebPath,
-        currentPhotoName
+        currentPhotoName,
+        setCurrentPhotoName
     };
 }

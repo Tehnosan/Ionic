@@ -112,12 +112,25 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({children}) => {
         const { Storage } = Plugins;
         page += 1;
 
+        const nr = recipes!.length % recipesPerPage;
+        if (nr != 0) {
+            page -= 1;
+
+            recipes?.splice(-nr, nr);
+        }
+
         dispatch({ type: FETCH_RECIPES_STARTED });
         new_recipes = await getRecipes(token, recipesPerPage, page);
+
+        if (new_recipes.length == 0) {
+            page -= 1;
+        }
 
         if (recipes) {
             new_all_recipes = [...recipes, ...new_recipes];
         }
+
+        console.info(new_all_recipes);
 
         await Storage.set({
            key: 'recipes',

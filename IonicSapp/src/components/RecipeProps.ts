@@ -4,4 +4,6 @@ export interface RecipeProps {
     time: string;
     difficulty: string;
     photoName?: string | Promise<string>;
+    latitude?: number;
+    longitude?: number;
 }

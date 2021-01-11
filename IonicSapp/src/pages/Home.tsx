@@ -6,7 +6,7 @@ import {
     IonFab,
     IonFabButton,
     IonHeader,
-    IonIcon, IonImg,
+    IonIcon,
     IonInfiniteScroll, IonInfiniteScrollContent,
     IonList,
     IonLoading,
@@ -15,12 +15,14 @@ import {
     IonToolbar
 } from "@ionic/react";
 import Recipe from "../components/Recipe";
-import { add, wifi, warning } from "ionicons/icons";
+import { add } from "ionicons/icons";
 import { RecipeContext } from "../components/RecipeProvider";
 import {AuthContext} from "../authentication";
 import {useNetwork} from "./useNetwork";
 import {useAppState} from "./useAppState";
 import {usePhotoGallery} from "../components/usePhotoGallery";
+import {chainAnimations, titleAnimation } from "../authentication/Animations";
+import "./Home.css";
 
 const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
     const { recipes, fetching, fetchingError, searchNext, disableInfiniteScroll } = useContext(RecipeContext);
@@ -36,17 +38,31 @@ const RecipeList: React.FC<RouteComponentProps> = ({history}) => {
         logout?.();
     }
 
+    useEffect(titleAnimation, []);
+    useEffect(chainAnimations, []);
+
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Sandrino's app</IonTitle>
+                    <div className="container2">
+                        <div className="title">
+                            <IonTitle>Sandrino's app</IonTitle>
+                        </div>
+                    </div>
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
                 {/*<div>App state is {JSON.stringify(appState)}</div>*/}
-                <div>Network status is {JSON.stringify(!disableInfiniteScroll)}</div>
-                <IonButton onClick={handleLogout}>Logout</IonButton>
+                <div className="container3">
+                    <div className="status">
+                        <p className="text">Network status is {JSON.stringify(!disableInfiniteScroll)}</p>
+                    </div>
+                    <div className="button">
+                        <IonButton onClick={handleLogout}>Logout</IonButton>
+                    </div>
+                </div>
+
                 <IonSearchbar value={searchRecipe} debounce={500} onIonChange={e => setSearchRecipe(e.detail.value!)}/>
                 <IonLoading isOpen={fetching} message="Fetching recipes" />
                 {recipes && (

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {RecipeProps} from "./RecipeProps";
-import {IonImg, IonItem, IonLabel, IonRow} from "@ionic/react";
+import {IonImg, IonItem, IonLabel} from "@ionic/react";
 
 interface RecipePropertiesExtended extends RecipeProps{
     onEdit: (id?: string) => void;

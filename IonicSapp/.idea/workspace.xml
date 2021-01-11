@@ -20,8 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="91d06a61-c13b-4fa0-bb79-527ccbaea53c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/authentication/Animations.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/authentication/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authentication/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/authentication/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Recipe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Recipe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/mapsApiKey.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mapsApiKey.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ionicLocationMap" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ionicAnimations" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Mobile\Ionic_Git\Ionic\IonicSapp\node_modules\typescript\lib" />
   </component>
@@ -100,7 +106,8 @@
       <workItem from="1610004011632" duration="23831000" />
       <workItem from="1610095364280" duration="65000" />
       <workItem from="1610101674601" duration="24905000" />
-      <workItem from="1610189326811" duration="8008000" />
+      <workItem from="1610189326811" duration="8873000" />
+      <workItem from="1610293806518" duration="6909000" />
     </task>
     <servers />
   </component>
@@ -132,10 +139,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="239" y="152" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1605350692549" />
-    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1610114607835">
+    <state x="527" y="85" key="FileChooserDialogImpl" timestamp="1610293963820">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1610114607835" />
+    <state x="527" y="85" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1610293963820" />
     <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1606916719815">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

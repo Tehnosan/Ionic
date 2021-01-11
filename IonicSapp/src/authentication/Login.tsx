@@ -1,8 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Redirect } from 'react-router-dom';
-import {IonButton, IonContent, IonHeader, IonInput, IonLoading, IonPage, IonTitle, IonToolbar} from '@ionic/react';
+import {
+    IonButton,
+    IonContent,
+    IonHeader,
+    IonInput,
+    IonLabel,
+    IonLoading,
+    IonPage,
+    IonTitle,
+    IonToolbar
+} from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 import { AuthContext } from './AuthProvider';
+import { groupLoginAnimations } from "./Animations";
+import "./login.css";
 
 interface LoginState {
     username?: string;
@@ -13,6 +25,8 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
     const { isAuthenticated, isAuthenticating, login, authenticationError } = useContext(AuthContext);
     const [state, setState] = useState<LoginState>({});
     const { username, password } = state;
+
+    useEffect(groupLoginAnimations, []);
 
     const handleLogin = () => {
         login?.(username, password);
@@ -30,6 +44,12 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
+                <div className="container">
+                    <div className="label1">
+                        <IonLabel>Username</IonLabel>
+                    </div>
+                </div>
+
                 <IonInput
                     placeholder="Username"
                     value={username}
@@ -38,6 +58,12 @@ export const Login: React.FC<RouteComponentProps> = ({history}) => {
                         username: e.detail.value || ''
                     })}
                 />
+                <div className="container">
+                    <div className="label2">
+                        <IonLabel>Password</IonLabel>
+                    </div>
+                </div>
+
                 <IonInput
                     placeholder="Password"
                     type="password"
